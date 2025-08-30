@@ -123,13 +123,13 @@ const Resume: React.FC = () => {
               </h2>
               
               {/* Download Current Resume */}
-             <a
-  href="/Krish-Resume.pdf"
-  download
-  className="w-full flex items-center justify-center space-x-3 px-6 py-4 bg-blue-600 text-white rounded-lg font-semibold shadow-lg hover:bg-blue-700 transition mb-6"
+             <a 
+  href="/Krish_Sharma_Resume.pdf" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  
 >
-  <Download className="w-5 h-5" />
-  <span>Download Resume (PDF)</span>
+  Download Resume
 </a>
 
               {/* Upload New Resume */}
