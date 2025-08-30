@@ -123,15 +123,14 @@ const Resume: React.FC = () => {
               </h2>
               
               {/* Download Current Resume */}
-              <motion.button
-                onClick={downloadSampleResume}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center space-x-3 px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 mb-6"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download Resume (PDF)</span>
-              </motion.button>
+             <a
+  href="/Krish-Resume.pdf"
+  download
+  className="w-full flex items-center justify-center space-x-3 px-6 py-4 bg-blue-600 text-white rounded-lg font-semibold shadow-lg hover:bg-blue-700 transition mb-6"
+>
+  <Download className="w-5 h-5" />
+  <span>Download Resume (PDF)</span>
+</a>
 
               {/* Upload New Resume */}
               <div className="border-2 border-dashed border-white/20 rounded-lg p-6">
