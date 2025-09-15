@@ -35,7 +35,9 @@ const Projects: React.FC = () => {
       description: "This very website you're browsing! Built with React, TypeScript, and modern design principles featuring glassmorphism and smooth animations.",
       image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-      status: "Live"
+      status: "Live",
+      liveLink: "https://portfolio-mocha-three-24.vercel.app/",
+      codeLink: "https://github.com/Krish-sharma-2003/portfolio.git"
     }
   ];
 
@@ -114,14 +116,24 @@ const Projects: React.FC = () => {
                   <div className="flex space-x-3">
                     {project.status === 'Live' ? (
                       <>
-                        <button className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                        <a 
+                          href={project.liveLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                        >
                           <ExternalLink className="w-4 h-4" />
                           <span>Live Demo</span>
-                        </button>
-                        <button className="flex items-center space-x-2 px-4 py-2 backdrop-blur-md bg-white/10 border border-white/20 text-gray-800 dark:text-white rounded-lg hover:bg-white/20 transition-all duration-300">
+                        </a>
+                        <a 
+                          href={project.codeLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 px-4 py-2 backdrop-blur-md bg-white/10 border border-white/20 text-gray-800 dark:text-white rounded-lg hover:bg-white/20 transition-all duration-300"
+                        >
                           <Github className="w-4 h-4" />
                           <span>Code</span>
-                        </button>
+                        </a>
                       </>
                     ) : (
                       <div className="flex items-center space-x-2 px-4 py-2 bg-gray-500/20 text-gray-500 rounded-lg cursor-not-allowed">
