@@ -24,11 +24,11 @@ const Home: React.FC = () => {
         >
           <div className="w-48 h-48 mx-auto mb-8 relative">
             <GlassCard className="w-full h-full flex items-center justify-center p-8" hover>
-             <img 
-      src="https://avatars.githubusercontent.com/u/192499147?v=4" 
-      alt="Krish Sharma"
-      className="w-full h-full object-cover rounded-lg"
-    />
+              <img 
+                src="https://avatars.githubusercontent.com/u/192499147?v=4" 
+                alt="Krish Sharma"
+                className="w-full h-full object-cover rounded-lg"
+              />
             </GlassCard>
             <motion.div
               animate={{ rotate: 360 }}
@@ -85,7 +85,12 @@ const Home: React.FC = () => {
           transition={{ duration: 0.8, delay: 1.8 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Link to="/resume">
+          {/* ✅ Resume Button Fixed */}
+          <a 
+            href="/Krish_Sharma_Resume.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -94,7 +99,7 @@ const Home: React.FC = () => {
               <Download className="w-5 h-5" />
               <span>View Resume</span>
             </motion.button>
-          </Link>
+          </a>
           
           <Link to="/projects">
             <motion.button
