@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Download, 
-  Upload, 
-  FileText, 
-  User, 
-  GraduationCap, 
-  Briefcase, 
-  Award, 
+import {
+  Download,
+  Upload,
+  FileText,
+  User,
+  GraduationCap,
+  Briefcase,
+  Award,
   Calendar,
   Mail,
-  Phone,
   MapPin,
-  ExternalLink
+  ExternalLink,
 } from 'lucide-react';
-import GlassCard from '../components/GlassCard';
+
+// ✅ Simple GlassCard component inline
+const GlassCard: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className, ...props }) => {
+  return (
+    <div
+      {...props}
+      className={`bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-lg ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
 
 const Resume: React.FC = () => {
   const [isDragOver, setIsDragOver] = useState(false);
@@ -66,7 +76,6 @@ const Resume: React.FC = () => {
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragOver(false);
-    
     const files = e.dataTransfer.files;
     if (files.length > 0 && files[0].type === 'application/pdf') {
       setUploadedFile(files[0]);
@@ -84,14 +93,10 @@ const Resume: React.FC = () => {
     }
   };
 
-  const downloadSampleResume = () => {
-    // This would trigger a download of the current resume
-    alert('Resume download would start here! (Upload your resume first)');
-  };
-
   return (
-    <div className="min-h-screen px-4 py-20">
+    <div className="min-h-screen px-4 py-20 relative">
       <div className="max-w-6xl mx-auto">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -99,9 +104,7 @@ const Resume: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-6">
-            Resume
-          </h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-6">Resume</h1>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Download my resume or view my experience and qualifications below.
@@ -109,39 +112,39 @@ const Resume: React.FC = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Resume Upload/Download Section */}
+          {/* Left Section */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-1"
           >
+            {/* Resume Upload/Download */}
             <GlassCard className="p-6 mb-8">
               <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center">
                 <FileText className="w-6 h-6 mr-3 text-blue-500" />
                 Resume Document
               </h2>
-              
-              {/* Download Current Resume */}
-             <a 
-  href="/Krish_Sharma_Resume.pdf" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  
->
-  Download Resume
-</a>
 
-              {/* Upload New Resume */}
+              {/* Download Button */}
+              <a
+                href="/Krish_Sharma_Resume.pdf"
+                download
+                className="block w-full text-center px-4 py-2 mb-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all"
+              >
+                Download Resume
+              </a>
+
+              {/* Upload Section */}
               <div className="border-2 border-dashed border-white/20 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
                   Update Resume
                 </h3>
-                
+
                 <div
                   className={`border-2 border-dashed rounded-lg p-6 text-center transition-all duration-300 ${
-                    isDragOver 
-                      ? 'border-blue-500 bg-blue-500/10' 
+                    isDragOver
+                      ? 'border-blue-500 bg-blue-500/10'
                       : 'border-white/20 hover:border-white/30'
                   }`}
                   onDragOver={handleDragOver}
@@ -153,7 +156,7 @@ const Resume: React.FC = () => {
                     Drag & drop your resume here
                   </p>
                   <p className="text-sm text-gray-500 mb-4">or</p>
-                  
+
                   <label className="cursor-pointer">
                     <span className="px-4 py-2 bg-white/10 text-gray-800 dark:text-white rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
                       Choose PDF file
@@ -165,17 +168,27 @@ const Resume: React.FC = () => {
                       onChange={handleFileUpload}
                     />
                   </label>
-                  
+
                   {uploadedFile && (
-                    <p className="mt-4 text-sm text-green-400">
-                      ✓ {uploadedFile.name} uploaded successfully
-                    </p>
+                    <div className="mt-4">
+                      <p className="text-sm text-green-400">
+                        ✓ {uploadedFile.name} uploaded successfully
+                      </p>
+                      <a
+                        href={URL.createObjectURL(uploadedFile)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 text-xs underline block mt-1"
+                      >
+                        Preview Uploaded Resume
+                      </a>
+                    </div>
                   )}
                 </div>
               </div>
             </GlassCard>
 
-            {/* Quick Contact */}
+            {/* Contact Info */}
             <GlassCard className="p-6">
               <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
                 Quick Contact
@@ -183,70 +196,50 @@ const Resume: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
                   <Mail className="w-4 h-4 text-blue-500" />
-                  <span className="text-sm">krishsharma792003@gmail.com</span>
+                  <span className="text-sm">{resumeData.personalInfo.email}</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
                   <MapPin className="w-4 h-4 text-green-500" />
-                  <span className="text-sm">India</span>
+                  <span className="text-sm">{resumeData.personalInfo.location}</span>
                 </div>
               </div>
             </GlassCard>
           </motion.div>
 
-          {/* Resume Preview/Details Section */}
+          {/* Right Section */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="lg:col-span-2"
           >
-            {/* Personal Information */}
+            {/* Personal Info */}
             <GlassCard className="p-8 mb-8">
               <div className="flex items-center mb-6">
                 <User className="w-6 h-6 mr-3 text-blue-500" />
-                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-                  Personal Information
-                </h2>
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Personal Information</h2>
               </div>
-              
+
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
                     {resumeData.personalInfo.name}
                   </h3>
                   <p className="text-lg text-blue-500 mb-4">{resumeData.personalInfo.title}</p>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    Passionate computer science student with a strong foundation in web development 
-                    and a keen interest in creating innovative digital solutions. Eager to apply 
-                    academic knowledge in real-world projects and contribute to meaningful software development.
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Passionate computer science student with a strong foundation in web development.
                   </p>
                 </div>
-                
+
                 <div className="space-y-3">
-                  <a 
-                    href={`mailto:${resumeData.personalInfo.email}`}
-                    className="flex items-center space-x-3 text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors duration-300"
-                  >
-                    <Mail className="w-4 h-4" />
-                    <span className="text-sm">{resumeData.personalInfo.email}</span>
+                  <a href={`mailto:${resumeData.personalInfo.email}`} className="flex items-center text-sm hover:text-blue-500 transition">
+                    <Mail className="w-4 h-4 mr-2" /> {resumeData.personalInfo.email}
                   </a>
-                  <a 
-                    href={resumeData.personalInfo.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-3 text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm">LinkedIn Profile</span>
+                  <a href={resumeData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm hover:text-blue-500 transition">
+                    <ExternalLink className="w-4 h-4 mr-2" /> LinkedIn Profile
                   </a>
-                  <a 
-                    href={resumeData.personalInfo.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-3 text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm">GitHub Profile</span>
+                  <a href={resumeData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="flex items-center text-sm hover:text-blue-500 transition">
+                    <ExternalLink className="w-4 h-4 mr-2" /> GitHub Profile
                   </a>
                 </div>
               </div>
@@ -258,7 +251,7 @@ const Resume: React.FC = () => {
                 <GraduationCap className="w-6 h-6 mr-3 text-green-500" />
                 <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Education</h2>
               </div>
-              
+
               {resumeData.education.map((edu, index) => (
                 <motion.div
                   key={index}
@@ -271,15 +264,9 @@ const Resume: React.FC = () => {
                     <Calendar className="w-4 h-4 text-blue-500" />
                     <span className="text-sm text-blue-500 font-medium">{edu.period}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
-                    {edu.degree}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium mb-2">
-                    {edu.institution}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                    {edu.details}
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-1">{edu.degree}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium mb-2">{edu.institution}</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{edu.details}</p>
                 </motion.div>
               ))}
             </GlassCard>
@@ -290,7 +277,7 @@ const Resume: React.FC = () => {
                 <Briefcase className="w-6 h-6 mr-3 text-purple-500" />
                 <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Experience</h2>
               </div>
-              
+
               {resumeData.experience.map((exp, index) => (
                 <motion.div
                   key={index}
@@ -303,51 +290,35 @@ const Resume: React.FC = () => {
                     <Calendar className="w-4 h-4 text-purple-500" />
                     <span className="text-sm text-purple-500 font-medium">{exp.period}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
-                    {exp.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium mb-2">
-                    {exp.company}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                    {exp.description}
-                  </p>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-1">{exp.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium mb-2">{exp.company}</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{exp.description}</p>
                 </motion.div>
               ))}
             </GlassCard>
 
-            {/* Skills Summary */}
+            {/* Skills */}
             <GlassCard className="p-8">
               <div className="flex items-center mb-6">
                 <Award className="w-6 h-6 mr-3 text-orange-500" />
                 <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Technical Skills</h2>
               </div>
-              
+
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Frontend</h3>
+                  <h3 className="text-lg font-semibold mb-3">Frontend</h3>
                   <div className="flex flex-wrap gap-2">
-                    {resumeData.skills.frontend.map((skill) => (
-                      <span 
-                        key={skill}
-                        className="px-3 py-1 text-xs font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full border border-blue-500/20"
-                      >
-                        {skill}
-                      </span>
+                    {resumeData.skills.frontend.map(skill => (
+                      <span key={skill} className="px-3 py-1 text-xs bg-blue-500/10 text-blue-600 rounded-full border border-blue-500/20">{skill}</span>
                     ))}
                   </div>
                 </div>
-                
+
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Backend & Tools</h3>
+                  <h3 className="text-lg font-semibold mb-3">Backend & Tools</h3>
                   <div className="flex flex-wrap gap-2">
-                    {[...resumeData.skills.backend, ...resumeData.skills.tools].map((skill) => (
-                      <span 
-                        key={skill}
-                        className="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-600 dark:text-green-400 rounded-full border border-green-500/20"
-                      >
-                        {skill}
-                      </span>
+                    {[...resumeData.skills.backend, ...resumeData.skills.tools].map(skill => (
+                      <span key={skill} className="px-3 py-1 text-xs bg-green-500/10 text-green-600 rounded-full border border-green-500/20">{skill}</span>
                     ))}
                   </div>
                 </div>
@@ -364,24 +335,20 @@ const Resume: React.FC = () => {
           className="mt-16 text-center"
         >
           <GlassCard className="p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-              Ready to Collaborate?
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-              I'm always excited about new opportunities to learn, grow, and contribute to meaningful projects. 
-              Whether it's an internship, freelance work, or collaboration, let's create something amazing together!
+            <h3 className="text-2xl font-bold mb-4">Ready to Collaborate?</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
+              Whether it's an internship, freelance, or collaboration, let's create something amazing together!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                onClick={downloadSampleResume}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <a
+                href="/Krish_Sharma_Resume.pdf"
+                download
                 className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <Download className="w-5 h-5" />
                 <span>Download Full Resume</span>
-              </motion.button>
-              
+              </a>
+
               <a href="/contact">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -397,7 +364,7 @@ const Resume: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Background Elements */}
+      {/* Background blobs */}
       <div className="absolute top-40 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-40 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl -z-10"></div>
       <div className="absolute top-2/3 left-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl -z-10"></div>
