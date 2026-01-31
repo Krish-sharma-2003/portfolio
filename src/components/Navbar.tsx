@@ -20,79 +20,74 @@ const Navbar: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-white/10 dark:bg-gray-900/10 border-b border-white/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 text-xl font-bold text-gray-800 dark:text-white">
-            <User className="w-8 h-8 text-blue-600" />
-            <span>Krish</span>
-          </Link>
+    <nav className="fixed top-0 w-full z-50 bg-black border-b border-zinc-800">
+      <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 text-white font-semibold">
+          <User className="w-7 h-7" />
+          Krish
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                  isActive(item.path)
-                    ? 'text-blue-600 bg-blue-100/20'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:bg-white/10'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-            
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-gray-700 dark:text-gray-300 transition-all duration-300"
+        {/* Desktop */}
+        <div className="hidden md:flex items-center gap-8">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className={`text-sm transition ${
+                isActive(item.path)
+                  ? 'text-white'
+                  : 'text-zinc-400 hover:text-white'
+              }`}
             >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-          </div>
+              {item.name}
+            </Link>
+          ))}
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-gray-700 dark:text-gray-300"
-            >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-gray-700 dark:text-gray-300"
-            >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+          <button
+            onClick={toggleTheme}
+            className="p-2 border border-zinc-700 rounded-md text-zinc-300 hover:text-white"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/10 backdrop-blur-md rounded-b-lg">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
-                    isActive(item.path)
-                      ? 'text-blue-600 bg-blue-100/20'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:bg-white/10'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* Mobile */}
+        <div className="md:hidden flex gap-3">
+          <button
+            onClick={toggleTheme}
+            className="p-2 border border-zinc-700 rounded-md text-zinc-300"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 border border-zinc-700 rounded-md text-zinc-300"
+          >
+            {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-black border-t border-zinc-800 px-4 py-4 space-y-3">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              onClick={() => setIsMenuOpen(false)}
+              className={`block ${
+                isActive(item.path)
+                  ? 'text-white'
+                  : 'text-zinc-400'
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
