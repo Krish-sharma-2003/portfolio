@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
 
           <button
             onClick={toggleTheme}
-            className="p-2 border border-zinc-700 rounded-md text-zinc-300 hover:text-white"
+            className="p-2 border border-zinc-700 rounded-md text-zinc-600 hover:text-white"
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
@@ -56,13 +56,13 @@ const Navbar: React.FC = () => {
         <div className="md:hidden flex gap-3">
           <button
             onClick={toggleTheme}
-            className="p-2 border border-zinc-700 rounded-md text-zinc-300"
+            className="p-2 border border-zinc-700 rounded-md text-zinc-600 hover:text-white"
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 border border-zinc-700 rounded-md text-zinc-300"
+            className="p-2 border border-zinc-700 rounded-md text-zinc-600 hover:text-white"
           >
             {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>

@@ -15,6 +15,7 @@ import {
   Brush
 } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
+import BallpitBackground from '../components/BallpitBackground';
 
 const Skills: React.FC = () => {
   const skillCategories = [
@@ -54,8 +55,9 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen px-4 py-20">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen px-4 py-20 relative">
+      <BallpitBackground />
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

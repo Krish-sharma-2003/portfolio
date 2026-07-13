@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Coffee, Heart, Target, Lightbulb, Users, Code, Palette, Brain } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
+import BallpitBackground from '../components/BallpitBackground';
 
 const About: React.FC = () => {
   const interests = [
@@ -18,8 +19,9 @@ const About: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen px-4 py-20">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen px-4 py-20 relative">
+      <BallpitBackground />
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -27,7 +29,7 @@ const About: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-White-800 dark:text-white mb-6">
             About Me
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
@@ -43,10 +45,10 @@ const About: React.FC = () => {
           <GlassCard className="p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-6">
+                <h2 className="text-3xl font-bold text-Dodger blue-800 dark:text-white mb-6">
                   Hey there! 👋
                 </h2>
-                <div className="space-y-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                <div className="space-y-4 text-lg text-white-600 dark:text-gray-300 leading-relaxed">
                   <p>
                     I'm Krish, a passionate computer science student who fell in love with coding during my first "Hello World" program. 
                     What started as curiosity has evolved into a genuine passion for creating digital solutions that make a difference.
@@ -155,7 +157,7 @@ const About: React.FC = () => {
               <Coffee className="w-8 h-8 text-amber-500 mr-3" />
               <BookOpen className="w-8 h-8 text-green-500" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+            <h3 className="text-2xl font-bold text-white-800 dark:text-white mb-4">
               Fun Fact
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">

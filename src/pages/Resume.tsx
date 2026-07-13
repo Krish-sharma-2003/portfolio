@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import BallpitBackground from '../components/BallpitBackground';
 import {
   Download,
   User,
@@ -49,8 +50,9 @@ const Resume: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen px-4 py-20">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen px-4 py-20 relative">
+      <BallpitBackground />
+      <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -175,7 +177,7 @@ const Resume: React.FC = () => {
         {/* FINAL CTA */}
         <div className="text-center">
           <a
-            href="/KRISH_RESUME.pdf"
+            href="/Krish_Sharma_Resume.pdf"
             download
             className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition"
           >

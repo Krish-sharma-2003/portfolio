@@ -37,7 +37,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       '(prefers-color-scheme: dark)'
     ).matches;
 
-    return prefersDark ? 'dark' : 'dark'; // force dark for professional look
+    return prefersDark ? 'dark' : 'light';
   };
 
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
