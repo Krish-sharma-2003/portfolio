@@ -112,7 +112,7 @@ const Projects: React.FC = () => {
                         </a>
                         {project.codeLink && (
                           <a
-                            href="https://drive.google.com/file/d/1wu4nrojfshufZLKwz93C7G05h2eFDNM9/view"
+                            href="https://github.com/Krish-sharma-2003/portfolio"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-center gap-2 px-4 py-2 backdrop-blur-md bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all duration-300"
