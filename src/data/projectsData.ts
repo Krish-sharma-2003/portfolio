@@ -31,7 +31,7 @@ export const projectsData: Project[] = [
     title: 'Automated Student Attendance System',
     description:
       'Facial recognition-based attendance system built from scratch. Selected at SIH 2026 (Smart India Hackathon) at college level — top 20 team out of 180. Full-stack development from facial detection to real-time attendance tracking.',
-    image: '/generated-image.png',
+    image: '/generated-image.jpg',
     technologies: ['Python', 'Computer Vision', 'React', 'Flask', 'OpenCV'],
     status: 'Complete',
     details: [
