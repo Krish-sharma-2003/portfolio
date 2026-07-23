@@ -2,7 +2,8 @@
 <!-- <img width="1894" height="919" alt="Screenshot_2026-07-23-01-00-01-710_com.brave.browser.jpg" src="https://github.com/user-attachments/assets/f5d1e371-2dbb-4f6a-b81d-a354aba91219" /> -->
 
 <!-- <img width="1898" height="924" alt="Screenshot_2026-07-23-01-38-11-304_com.brave.browser.jpg" src="https://github.com/user-attachments/assets/ea4aa05e-77e2-483d-b559-896e1be9d826" /> -->
-<img width="1909" height="966" alt="Screenshot From 2026-07-23 13-40-52" src="https://github.com/user-attachments/assets/bad89277-2ecb-446d-bdba-697e8e60a547" />
+<!-- <img width="1909" height="966" alt="Screenshot From 2026-07-23 13-40-52" src="https://github.com/user-attachments/assets/bad89277-2ecb-446d-bdba-697e8e60a547" /> -->
+<img width="1903" height="971" alt="Screenshot From 2026-07-23 13-40-11" src="https://github.com/user-attachments/assets/c6e57547-ed27-4e28-a2b1-12c7c5b9ba97" />
 
 <img width="1909" height="966" alt="Screenshot From 2026-07-23 13-40-52" src="https://github.com/user-attachments/assets/c8c3a59d-a446-4990-a181-76e1e4bc57ad" />
 
@@ -15,7 +16,6 @@ This is my personal **Portfolio Website** showcasing my skills, projects, and ac
 Built using modern web technologies and deployed seamlessly with **Vercel**.  
 
 ---
-![Uploading Screenshot From 2026-07-23 13-40-11.png…]()
 
 ## 🚀 Live Demo
 👉 [krishsharma.vercel.app](https://krishsharma.vercel.app)
