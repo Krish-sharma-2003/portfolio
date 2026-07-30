@@ -18,7 +18,7 @@ export const projectsData: Project[] = [
       'A full-stack intelligent ERP system with automated invoice OCR using Gemini Vision API. Features include automated invoice processing, ledger/voucher system with full audit trail, and comprehensive inventory management.',
     image: '/Inventory_Project_image.png',
     technologies: ['React', 'FastAPI', 'Supabase', 'Gemini Vision API', 'Tailwind CSS', 'shadcn/ui'],
-    status: 'In Progress',
+    status: 'Live on GitHub',
     codeLink: 'https://github.com/Krish-sharma-2003/Auto-Stack.git',
     details: [
       'Building intelligent ERP with automated invoice OCR using Gemini Vision API and GSTIN validation',
