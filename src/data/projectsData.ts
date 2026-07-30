@@ -19,7 +19,7 @@ export const projectsData: Project[] = [
     image: '/Inventory_Project_image.png',
     technologies: ['React', 'FastAPI', 'Supabase', 'Gemini Vision API', 'Tailwind CSS', 'shadcn/ui'],
     status: 'In Progress',
-    codeLink: 'https://github.com/Krish-sharma-2003/StockFlow',
+    codeLink: 'https://github.com/Krish-sharma-2003/Auto-Stack.git',
     details: [
       'Building intelligent ERP with automated invoice OCR using Gemini Vision API and GSTIN validation',
       'Designing ledger/voucher system with full audit trail; frontend in React + Tailwind + shadcn/ui',
@@ -34,6 +34,7 @@ export const projectsData: Project[] = [
     image: '/generated-image.jpg',
     technologies: ['Python', 'Computer Vision', 'React', 'Flask', 'OpenCV'],
     status: 'Complete',
+    codeLink: 'https://drive.google.com/file/d/1wu4nrojfshufZLKwz93C7G05h2eFDNM9/view',
     details: [
       'Built facial-recognition attendance system — UI to backend processing — entirely from scratch',
       'Selected at SIH 2026 (Smart India Hackathon) at college level — Top 20 team out of 180, led full dev lifecycle and team',
