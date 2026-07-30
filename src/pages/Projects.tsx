@@ -129,7 +129,7 @@ const Projects: React.FC = () => {
                         className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 rounded-lg transition-colors duration-300 font-medium border border-blue-500/30"
                       >
                         <Code2 className="w-4 h-4" />
-                        <span>In Progress</span>
+                        <span>Live on GitHub</span>
                       </a>
                     ) : (
                       <div className="flex-1 flex items-center justify-center px-4 py-2 bg-blue-500/10 text-white-400/50 rounded-lg cursor-not-allowed border border-blue-500/20">
