@@ -50,13 +50,11 @@ const Projects: React.FC = () => {
                   {/* Status Badge */}
                   <div
                     className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${
-                      project.status === 'Live'
-                        ? 'bg-green-500/20 text-green-300 border border-green-500/30'
+                      project.status === 'Live on GitHub'
+                        ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
                         : project.status === 'Complete'
                           ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                          : project.status === 'In Progress'
-                            ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
-                            : 'bg-orange-500/20 text-orange-300 border border-orange-500/30'
+                          : 'bg-orange-500/20 text-orange-300 border border-orange-500/30'
                     }`}
                   >
                     {project.status}
@@ -99,7 +97,7 @@ const Projects: React.FC = () => {
 
                   {/* Action Buttons */}
                   <div className="flex gap-3 mt-auto">
-                    {project.status === 'Live' && project.liveLink ? (
+                    {project.status === 'Live on GitHub' && project.liveLink ? (
                       <>
                         <a
                           href={project.liveLink}

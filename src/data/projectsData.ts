@@ -4,7 +4,7 @@ export interface Project {
   description: string;
   image: string;
   technologies: string[];
-  status: 'Live' | 'Coming Soon' | 'Complete';
+  status: 'Live on GitHub' | 'Coming Soon' | 'Complete';
   liveLink?: string;
   codeLink?: string;
   details?: string[];
