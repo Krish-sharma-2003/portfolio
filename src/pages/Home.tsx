@@ -22,7 +22,7 @@ const Home: React.FC = () => {
             {/* Glow */}
             <div className="absolute -inset-4 rounded-3xl bg-blue-500/20 blur-2xl"></div>
             <img
-              src="/krish_bhai.jpg"
+              src={`${import.meta.env.BASE_URL}krish_bhai.jpg`}
               alt="Krish Sharma"
               className="relative w-full h-full rounded-2xl object-cover border-2 border-blue-500/40 shadow-2xl shadow-blue-500/30"
             />

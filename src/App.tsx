@@ -12,7 +12,7 @@ import Resume from './pages/Resume';
 function App() {
   return (
     <ThemeProvider>
-      <Router>
+      <Router basename="/portfolio">
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />

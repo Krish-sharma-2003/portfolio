@@ -68,7 +68,7 @@ const About: React.FC = () => {
               <div className="flex justify-center">
                 <GlassCard className="p-6" hover>
                   <img 
-                    src="/avatar-about.jpeg"
+                    src={`${import.meta.env.BASE_URL}avatar-about.jpeg`}
                     className="w-full h-64 object-cover rounded-lg"
                   />
                 </GlassCard>

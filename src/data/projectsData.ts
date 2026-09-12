@@ -16,7 +16,7 @@ export const projectsData: Project[] = [
     title: 'Smart Inventory — AI-Powered Invoice & Inventory ERP',
     description:
       'A full-stack intelligent ERP system with automated invoice OCR using Gemini Vision API. Features include automated invoice processing, ledger/voucher system with full audit trail, and comprehensive inventory management.',
-    image: '/Inventory_Project_image.png',
+    image: `${import.meta.env.BASE_URL}Inventory_Project_image.png`,
     technologies: ['React', 'FastAPI', 'Supabase', 'Gemini Vision API', 'Tailwind CSS', 'shadcn/ui'],
     status: 'Live on GitHub',
     codeLink: 'https://github.com/Krish-sharma-2003/Auto-Stack.git',
@@ -31,7 +31,7 @@ export const projectsData: Project[] = [
     title: 'Automated Student Attendance System',
     description:
       'Facial recognition-based attendance system built from scratch. Selected at SIH 2026 (Smart India Hackathon) at college level — top 20 team out of 180. Full-stack development from facial detection to real-time attendance tracking.',
-    image: '/generated-image.jpg',
+    image: `${import.meta.env.BASE_URL}generated-image.jpg`,
     technologies: ['Python', 'Computer Vision', 'React', 'Flask', 'OpenCV'],
     status: 'Complete',
     codeLink: 'https://drive.google.com/file/d/1wu4nrojfshufZLKwz93C7G05h2eFDNM9/view',
@@ -45,7 +45,7 @@ export const projectsData: Project[] = [
     title: 'Portfolio Website',
     description:
       'Personal portfolio showcasing projects, skills, and experience. Built with modern React, TypeScript, and design principles featuring smooth animations and glassmorphism effects.',
-    image: '/Homepage ssc.png',
+    image: `${import.meta.env.BASE_URL}Homepage ssc.png`,
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     status: 'Live',
     liveLink: 'https://krishsharma.vercel.app',
