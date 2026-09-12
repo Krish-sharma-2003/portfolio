@@ -18,7 +18,7 @@ Built using modern web technologies and deployed seamlessly with **Vercel**.
 ---
 
 ## 🚀 Live Demo
-👉 [krishsharma.vercel.app](https://krishsharma.vercel.app)
+👉 [krishsharma.vercel.app]([https://krishsharma.vercel.app](https://krish-sharma-2003.github.io/portfolio/))
 
 ---
 
