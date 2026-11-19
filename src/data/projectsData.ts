@@ -19,7 +19,7 @@ export const projectsData: Project[] = [
     image: `${import.meta.env.BASE_URL}Inventory_Project_image.png`,
     technologies: ['React', 'FastAPI', 'Supabase', 'Gemini Vision API', 'Tailwind CSS', 'shadcn/ui'],
     status: 'Live on GitHub',
-    codeLink: 'https://github.com/Krish-sharma-2003/Auto-Stack.git',
+    codeLink: 'https://github.com/Krish-sharma-2003/StockFlow.git',
     details: [
       'Building intelligent ERP with automated invoice OCR using Gemini Vision API and GSTIN validation',
       'Designing ledger/voucher system with full audit trail; frontend in React + Tailwind + shadcn/ui',
@@ -45,7 +45,7 @@ export const projectsData: Project[] = [
     title: 'Portfolio Website',
     description:
       'Personal portfolio showcasing projects, skills, and experience. Built with modern React, TypeScript, and design principles featuring smooth animations and glassmorphism effects.',
-    image: `${import.meta.env.BASE_URL}Homepage ssc.png`,
+    image: `${import.meta.env.BASE_URL}Pasted image.png`,
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     status: 'Live',
     liveLink: 'https://krishsharma.vercel.app',

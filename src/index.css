@@ -1,3 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-hero: #050806;
+  --nav-h: 72px;
+  --accent: #c8ff2e;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --nav-h: 64px;
+  }
+}
+
+html,
+body {
+  background-color: var(--bg-hero);
+  overscroll-behavior-y: none;
+}
+
+body {
+  margin: 0;
+}
+
+@keyframes shineSweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  22% {
+    transform: translateX(120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.38) 50%, transparent 62%);
+  transform: translateX(-120%);
+  animation: shineSweep 4.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.text-shadow-soft {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
