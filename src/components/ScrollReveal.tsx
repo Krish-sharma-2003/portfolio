@@ -1,5 +1,7 @@
-import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import { gsap } from '../lib/gsap';
+import { prefersReducedMotion } from '../lib/gsap';
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -8,17 +10,40 @@ interface ScrollRevealProps {
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({ children, delay = 0, className = '' }) => {
-  const reduced = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const el = ref.current;
+      if (!el) return;
+      if (prefersReducedMotion()) {
+        gsap.set(el, { autoAlpha: 1, y: 0, clearProps: 'willChange' });
+        return;
+      }
+      gsap.set(el, { autoAlpha: 0, y: 32, willChange: 'transform, opacity' });
+      gsap.to(el, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        delay,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          once: true,
+        },
+        onComplete: () => {
+          gsap.set(el, { clearProps: 'willChange' });
+        },
+      });
+    },
+    { scope: ref, dependencies: [delay] }
+  );
+
   return (
-    <motion.div
-      initial={reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: reduced ? 0 : 0.6, delay: reduced ? 0 : delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
+    <div ref={ref} className={className}>
       {children}
-    </motion.div>
+    </div>
   );
 };
 

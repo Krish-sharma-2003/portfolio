@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { useGSAP } from '@gsap/react';
+import { gsap } from '../lib/gsap';
+import { prefersReducedMotion, canHover } from '../lib/gsap';
 import { ExternalLink, Github, Play } from 'lucide-react';
 import { projectsData, PROJECT_SORT_ORDER } from '../data/projectsData';
 import PageShell from '../components/PageShell';
@@ -141,9 +144,9 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onWatch, index }) => {
-  const reducedMotion = useReducedMotion();
   const [imageFailed, setImageFailed] = useState(false);
   const tiltRef = useTilt<HTMLDivElement>();
+  const cardRef = useRef<HTMLDivElement>(null);
   const links = project.links ?? { github: project.codeLink, live: project.liveLink };
   const initials = project.title
     .split(/\s+/)
@@ -159,13 +162,46 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onWatch, index }) =>
   const primaryButtonClass =
     'inline-flex min-h-[44px] items-center gap-2 rounded-full bg-accent px-4 py-2 font-display text-[15px] font-semibold text-black shadow-[0_0_0_1px_rgba(200,255,46,0.4),0_0_24px_rgba(200,255,46,0.45),0_0_60px_rgba(200,255,46,0.25)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(200,255,46,0.6),0_0_32px_rgba(200,255,46,0.6),0_0_80px_rgba(200,255,46,0.35)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-black';
 
+  useGSAP(
+    () => {
+      const root = cardRef.current;
+      if (!root) return;
+      const img = root.querySelector<HTMLElement>('img.project-parallax');
+      if (prefersReducedMotion()) {
+        gsap.set(root, { autoAlpha: 1, y: 0 });
+        return;
+      }
+      gsap.set(root, { autoAlpha: 0, y: 32 });
+      gsap.to(root, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        delay: index * 0.08,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: root, start: 'top 88%', once: true },
+      });
+      if (img && canHover() && window.innerWidth >= 768) {
+        gsap.fromTo(
+          img,
+          { yPercent: -6 },
+          {
+            yPercent: 6,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: root,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true,
+            },
+          }
+        );
+      }
+    },
+    { scope: cardRef, dependencies: [index] }
+  );
+
   return (
-    <motion.div
-      initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: reducedMotion ? 0 : 0.6, delay: reducedMotion ? 0 : index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div ref={cardRef} data-project-card>
       <div ref={tiltRef} className="glass group relative flex h-full flex-col overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -184,7 +220,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onWatch, index }) =>
               width={640}
               height={360}
               onError={() => setImageFailed(true)}
-              className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              className="project-parallax h-52 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
           ) : (
             <div className="flex h-52 w-full items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-950 text-5xl font-display font-bold text-accent">
@@ -267,7 +303,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onWatch, index }) =>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

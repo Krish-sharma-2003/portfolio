@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import TransitionLink from '../components/TransitionLink';
 import {
   Code,
   Database,
@@ -164,9 +164,9 @@ const Skills: React.FC = () => {
               Always expanding my knowledge and strengthening my fundamentals.
             </p>
           </div>
-          <Link to="/projects" className="btn-glass">
+          <TransitionLink to="/projects" className="btn-glass">
             See my projects
-          </Link>
+          </TransitionLink>
         </GlassCard>
       </ScrollReveal>
     </PageShell>

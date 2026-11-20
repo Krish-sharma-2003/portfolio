@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import TransitionLink from '../components/TransitionLink';
 import GlassCard from '../components/GlassCard';
 import PageShell from '../components/PageShell';
 import PageHeader from '../components/PageHeader';
@@ -44,10 +44,10 @@ const About: React.FC = () => {
               <a href={RESUME_PATH} target="_blank" rel="noopener noreferrer" className="btn-glass">
                 View Resume
               </a>
-              <Link to="/contact" className="btn-primary">
+              <TransitionLink to="/contact" className="btn-primary">
                 Contact Me
                 <ArrowUpRight className="h-4 w-4" />
-              </Link>
+              </TransitionLink>
             </div>
           </div>
         </ScrollReveal>

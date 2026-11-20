@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { TransitionProvider } from './contexts/TransitionContext';
+import { SmoothScrollProvider } from './contexts/SmoothScrollContext';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -13,16 +15,20 @@ function App() {
   return (
     <ThemeProvider>
       <Router basename="/portfolio">
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/resume" element={<Resume />} />
-          </Routes>
-        </Layout>
+        <TransitionProvider>
+          <SmoothScrollProvider>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/skills" element={<Skills />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/resume" element={<Resume />} />
+              </Routes>
+            </Layout>
+          </SmoothScrollProvider>
+        </TransitionProvider>
       </Router>
     </ThemeProvider>
   );
