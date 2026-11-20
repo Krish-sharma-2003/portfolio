@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '../contexts/ThemeContext';
 
 const navigation = [
   { name: 'Home', path: '/' },
@@ -15,7 +14,6 @@ const navigation = [
 const Navbar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activePath, setActivePath] = useState(location.pathname);
@@ -107,7 +105,7 @@ const Navbar: React.FC = () => {
                   key={item.name}
                   to={item.path}
                   onClick={() => handleNavigate(item.path)}
-                  className={`relative font-display text-base font-medium transition-colors ${
+                  className={`relative font-display text-base font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded ${
                     active ? 'text-white' : 'text-white/70 hover:text-white'
                   }`}
                 >
@@ -133,15 +131,6 @@ const Navbar: React.FC = () => {
             >
               Resume
             </Link>
-
-            <button
-              type="button"
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-accent/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
 
             <button
               type="button"
@@ -191,11 +180,12 @@ const Navbar: React.FC = () => {
                         key={item.name}
                         to={item.path}
                         onClick={() => handleNavigate(item.path)}
-                        className={`flex min-h-[48px] items-center rounded-2xl px-4 font-display text-lg font-medium transition-colors ${
-                          active ? 'bg-white/10 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'
+                        className={`flex min-h-[48px] items-center justify-between rounded-2xl px-4 font-display text-lg font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                          active ? 'text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'
                         }`}
                       >
-                        {item.name}
+                        <span>{item.name}</span>
+                        {active && <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_rgba(200,255,46,0.9)]" />}
                       </Link>
                     );
                   })}

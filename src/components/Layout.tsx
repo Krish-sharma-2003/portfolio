@@ -9,9 +9,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen text-white">
       <Navbar />
-      <main className="pt-16">
-        {children}
-      </main>
+      <div className="ambient-bg" aria-hidden="true">
+        <span className="ambient-blob ambient-blob--1" />
+        <span className="ambient-blob ambient-blob--2" />
+        <span className="ambient-blob ambient-blob--3" />
+      </div>
+      <main>{children}</main>
     </div>
   );
 };

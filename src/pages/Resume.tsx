@@ -1,6 +1,7 @@
 // import React from 'react';
 // import { motion } from 'framer-motion';
-// import BallpitBackground from '../components/BallpitBackground';
+// import PageShell from '../components/PageShell';
+// import PageHeader from '../components/PageHeader';
 // import {
 //   Download,
 //   User,
@@ -51,8 +52,7 @@
 
 //   return (
 //     <div className="min-h-screen px-4 py-20 relative">
-//       <BallpitBackground />
-//       <div className="max-w-5xl mx-auto relative z-10">
+// //       <div className="max-w-5xl mx-auto relative z-10">
 //         {/* Header */}
 //         <motion.div
 //           initial={{ opacity: 0, y: 20 }}
@@ -81,7 +81,7 @@
 //           <h3 className="text-2xl font-bold text-white">
 //             {resumeData.personalInfo.name}
 //           </h3>
-//           <p className="text-blue-400 mb-4">
+//           <p className="text-accent mb-4">
 //             {resumeData.personalInfo.title}
 //           </p>
 
@@ -120,7 +120,7 @@
 
 //           {resumeData.education.map((edu, i) => (
 //             <div key={i}>
-//               <div className="flex items-center text-sm text-blue-400 mb-1">
+//               <div className="flex items-center text-sm text-accent mb-1">
 //                 <Calendar size={14} className="mr-2" /> {edu.period}
 //               </div>
 //               <h3 className="text-lg font-bold text-white">{edu.degree}</h3>
@@ -139,7 +139,7 @@
 
 //           {resumeData.experience.map((exp, i) => (
 //             <div key={i}>
-//               <div className="flex items-center text-sm text-purple-400 mb-1">
+//               <div className="flex items-center text-sm text-accent mb-1">
 //                 <Calendar size={14} className="mr-2" /> {exp.period}
 //               </div>
 //               <h3 className="text-lg font-bold text-white">{exp.title}</h3>
@@ -196,7 +196,8 @@
 
 // import React from 'react';
 // import { motion } from 'framer-motion';
-// import BallpitBackground from '../components/BallpitBackground';
+// import PageShell from '../components/PageShell';
+// import PageHeader from '../components/PageHeader';
 // import {
 //   Download,
 //   User,
@@ -247,8 +248,7 @@
 
 //   return (
 //     <div className="min-h-screen px-4 py-20 relative overflow-hidden">
-//       <BallpitBackground />
-//       <div className="max-w-5xl mx-auto relative z-10">
+// //       <div className="max-w-5xl mx-auto relative z-10">
 //         {/* Header */}
 //         <motion.div
 //           initial={{ opacity: 0, y: 20 }}
@@ -273,14 +273,14 @@
 //             className="bg-zinc-950/70 border border-zinc-800/80 rounded-3xl p-8 md:p-10 backdrop-blur-sm"
 //           >
 //             <div className="flex items-center gap-3 mb-6">
-//               <div className="w-10 h-10 rounded-2xl bg-blue-500/10 flex items-center justify-center">
-//                 <User className="w-6 h-6 text-blue-400" />
+//               <div className="w-10 h-10 rounded-2xl bg-accent/10 flex items-center justify-center">
+//                 <User className="w-6 h-6 text-accent" />
 //               </div>
 //               <h2 className="text-2xl font-semibold text-white">Personal Information</h2>
 //             </div>
 
 //             <h3 className="text-3xl font-bold text-white mb-1">{resumeData.personalInfo.name}</h3>
-//             <p className="text-blue-400 text-xl mb-6">{resumeData.personalInfo.title}</p>
+//             <p className="text-accent text-xl mb-6">{resumeData.personalInfo.title}</p>
 
 //             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-zinc-400">
 //               <div className="flex items-center gap-3">
@@ -328,7 +328,7 @@
 
 //             {resumeData.education.map((edu, i) => (
 //               <div key={i}>
-//                 <div className="flex items-center gap-2 text-blue-400 mb-3">
+//                 <div className="flex items-center gap-2 text-accent mb-3">
 //                   <Calendar className="w-4 h-4" /> {edu.period}
 //                 </div>
 //                 <h3 className="text-2xl font-bold text-white mb-1">{edu.degree}</h3>
@@ -346,15 +346,15 @@
 //             className="bg-zinc-950/70 border border-zinc-800/80 rounded-3xl p-8 md:p-10 backdrop-blur-sm"
 //           >
 //             <div className="flex items-center gap-3 mb-6">
-//               <div className="w-10 h-10 rounded-2xl bg-purple-500/10 flex items-center justify-center">
-//                 <Briefcase className="w-6 h-6 text-purple-400" />
+//               <div className="w-10 h-10 rounded-2xl bg-accent/10 flex items-center justify-center">
+//                 <Briefcase className="w-6 h-6 text-accent" />
 //               </div>
 //               <h2 className="text-2xl font-semibold text-white">Experience</h2>
 //             </div>
 
 //             {resumeData.experience.map((exp, i) => (
 //               <div key={i}>
-//                 <div className="flex items-center gap-2 text-purple-400 mb-3">
+//                 <div className="flex items-center gap-2 text-accent mb-3">
 //                   <Calendar className="w-4 h-4" /> {exp.period}
 //                 </div>
 //                 <h3 className="text-2xl font-bold text-white mb-1">{exp.title}</h3>
@@ -383,7 +383,7 @@
 //                 (skill) => (
 //                   <span
 //                     key={skill}
-//                     className="px-5 py-2.5 bg-zinc-900 border border-zinc-700 hover:border-purple-500/30 rounded-2xl text-sm text-zinc-300 hover:text-white transition-all"
+//                     className="px-5 py-2.5 bg-zinc-900 border border-zinc-700 hover:border-accent/30 rounded-2xl text-sm text-zinc-300 hover:text-white transition-all"
 //                   >
 //                     {skill}
 //                   </span>
@@ -398,7 +398,7 @@
 //           <a
 //             href="/Krish_Sharma_Resume.pdf"
 //             download
-//             className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white rounded-2xl font-medium text-lg transition-all duration-300 shadow-xl shadow-purple-500/20"
+//             className="inline-flex items-center gap-3 px-10 py-4 bg-accent hover:bg-accent/90 text-white rounded-2xl font-medium text-lg transition-all duration-300 shadow-xl shadow-accent/20"
 //           >
 //             <Download size={22} />
 //             Download Resume (PDF)
@@ -415,7 +415,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import BallpitBackground from '../components/BallpitBackground';
+import PageShell from '../components/PageShell';
+import PageHeader from '../components/PageHeader';
 import {
   Download,
   User,
@@ -479,23 +480,9 @@ const Resume: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen px-4 py-20 relative overflow-hidden">
-      <BallpitBackground />
-      <div className="max-w-5xl mx-auto relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent mb-4">
-            Resume
-          </h1>
-          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
-            Download my resume or explore my background, experience, and skills below.
-          </p>
-        </motion.div>
+    <PageShell>
+      <div className="max-w-5xl mx-auto">
+        <PageHeader title="Resume" subtitle="Download my resume or explore my background, experience, and skills below." />
 
         <div className="space-y-8">
           {/* Personal Info */}
@@ -506,14 +493,14 @@ const Resume: React.FC = () => {
             className="bg-zinc-950/70 border border-zinc-800/80 rounded-3xl p-8 md:p-10 backdrop-blur-sm"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-2xl bg-blue-500/10 flex items-center justify-center">
-                <User className="w-6 h-6 text-blue-400" />
+              <div className="w-10 h-10 rounded-2xl bg-accent/10 flex items-center justify-center">
+                <User className="w-6 h-6 text-accent" />
               </div>
               <h2 className="text-2xl font-semibold text-white">Personal Information</h2>
             </div>
 
             <h3 className="text-3xl font-bold text-white mb-1">{resumeData.personalInfo.name}</h3>
-            <p className="text-blue-400 text-xl mb-6">{resumeData.personalInfo.title}</p>
+            <p className="text-accent text-xl mb-6">{resumeData.personalInfo.title}</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-zinc-400">
               <div className="flex items-center gap-3">
@@ -549,7 +536,7 @@ const Resume: React.FC = () => {
 
             {resumeData.education.map((edu, i) => (
               <div key={i}>
-                <div className="flex items-center gap-2 text-blue-400 mb-3">
+                <div className="flex items-center gap-2 text-accent mb-3">
                   <Calendar className="w-4 h-4" /> {edu.period}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-1">{edu.degree}</h3>
@@ -567,15 +554,15 @@ const Resume: React.FC = () => {
             className="bg-zinc-950/70 border border-zinc-800/80 rounded-3xl p-8 md:p-10 backdrop-blur-sm"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-2xl bg-purple-500/10 flex items-center justify-center">
-                <Briefcase className="w-6 h-6 text-purple-400" />
+              <div className="w-10 h-10 rounded-2xl bg-accent/10 flex items-center justify-center">
+                <Briefcase className="w-6 h-6 text-accent" />
               </div>
               <h2 className="text-2xl font-semibold text-white">Experience</h2>
             </div>
 
             {resumeData.experience.map((exp, i) => (
               <div key={i} className="mb-10 last:mb-0">
-                <div className="flex items-center gap-2 text-purple-400 mb-3">
+                <div className="flex items-center gap-2 text-accent mb-3">
                   <Calendar className="w-4 h-4" /> {exp.period}
                 </div>
                 
@@ -597,7 +584,7 @@ const Resume: React.FC = () => {
                     href={exp.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-purple-500 text-sm rounded-2xl text-zinc-300 hover:text-white transition-all"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-accent text-sm rounded-2xl text-zinc-300 hover:text-white transition-all"
                   >
                     <ExternalLink size={16} />
                     {exp.linkText}
@@ -625,7 +612,7 @@ const Resume: React.FC = () => {
               {[...resumeData.skills.frontend, ...resumeData.skills.backend, ...resumeData.skills.tools].map((skill) => (
                 <span
                   key={skill}
-                  className="px-5 py-2.5 bg-zinc-900 border border-zinc-700 hover:border-purple-500/30 rounded-2xl text-sm text-zinc-300 hover:text-white transition-all"
+                  className="px-5 py-2.5 bg-zinc-900 border border-zinc-700 hover:border-accent/30 rounded-2xl text-sm text-zinc-300 hover:text-white transition-all"
                 >
                   {skill}
                 </span>
@@ -639,14 +626,14 @@ const Resume: React.FC = () => {
           <a
             href="/Krish_Sharma_Resume.pdf"
             download
-            className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white rounded-2xl font-medium text-lg transition-all duration-300 shadow-xl shadow-purple-500/20"
+            className="inline-flex items-center gap-3 px-10 py-4 bg-accent hover:bg-accent/90 text-white rounded-2xl font-medium text-lg transition-all duration-300 shadow-xl shadow-accent/20"
           >
             <Download size={22} />
             Download Resume (PDF)
           </a>
         </div>
       </div>
-    </div>
+    </PageShell>
   );
 };
 

@@ -1,27 +1,42 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useTilt } from '../hooks/useTilt';
 
 interface GlassCardProps {
   children: React.ReactNode;
   className?: string;
-  hover?: boolean;
+  interactive?: boolean;
+  tilt?: boolean;
 }
 
-const GlassCard: React.FC<GlassCardProps> = ({ children, className = '', hover = false }) => {
+const GlassCard: React.FC<GlassCardProps> = ({ children, className = '', interactive = false, tilt = false }) => {
+  const tiltRef = useTilt<HTMLDivElement>(tilt);
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!interactive) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    e.currentTarget.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
+    e.currentTarget.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
+  };
+
   return (
-    <motion.div
-      whileHover={hover ? { y: -5, scale: 1.02 } : {}}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`
-        backdrop-blur-md bg-white/10 dark:bg-white/5 
-        border border-white/20 dark:border-white/10 
-        rounded-xl shadow-lg hover:shadow-xl 
-        transition-all duration-300
-        ${className}
-      `}
+    <div
+      ref={tiltRef}
+      onPointerMove={handlePointerMove}
+      className={`glass relative ${interactive ? 'glass-interactive' : ''} ${className}`}
     >
+      {interactive && (
+        <div
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background:
+              'radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.12), transparent 42%)',
+          }}
+        />
+      )}
       {children}
-    </motion.div>
+    </div>
   );
 };
 
