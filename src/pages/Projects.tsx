@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ExternalLink, Github, Play } from 'lucide-react';
 import { projectsData, PROJECT_SORT_ORDER } from '../data/projectsData';
 import PageShell from '../components/PageShell';
@@ -140,11 +140,8 @@ interface ProjectCardProps {
   index: number;
 }
 
-const reducedMotion =
-  typeof window !== 'undefined' &&
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onWatch, index }) => {
+  const reducedMotion = useReducedMotion();
   const [imageFailed, setImageFailed] = useState(false);
   const tiltRef = useTilt<HTMLDivElement>();
   const links = project.links ?? { github: project.codeLink, live: project.liveLink };

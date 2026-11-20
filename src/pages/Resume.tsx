@@ -626,7 +626,7 @@ const Resume: React.FC = () => {
           <a
             href="/Krish_Sharma_Resume.pdf"
             download
-            className="inline-flex items-center gap-3 px-10 py-4 bg-accent hover:bg-accent/90 text-white rounded-2xl font-medium text-lg transition-all duration-300 shadow-xl shadow-accent/20"
+            className="inline-flex items-center gap-3 px-10 py-4 bg-accent hover:bg-accent/90 text-Black rounded-2xl font-medium text-lg transition-all duration-300 shadow-xl shadow-accent/20"
           >
             <Download size={22} />
             Download Resume (PDF)
